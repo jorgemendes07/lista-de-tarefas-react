@@ -2,15 +2,35 @@ import { useState } from 'react'
 import './App.css'
 
 const App = () => {
-  const [count, setCount] = useState(0)
+  const [tarefa, setTarefa] = useState('')
+
+  const handleSubmit = (ev) => {
+    ev.preventDefault()
+
+    const novaTarefa = {
+      id: Math.floor(Math.random() * 1000000),
+      tarefa: tarefa
+    }
+
+    console.log(novaTarefa)
+    setTarefa('')
+  }
 
   return (
     <div id='appContainer'>
       <h1>Lista de tarefas</h1>
-      <div id='tarefaBotao'>
-        <input type="text" id='tarefa' placeholder='Qual tarefa deseja incluir?' />
-        <button id='botao'>Adicionar</button>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <div id='tarefaBotao'>
+          <input 
+          type="text" 
+          id='tarefa' 
+          placeholder='Qual tarefa deseja incluir?'
+          value={tarefa}
+          onChange={(ev) => setTarefa(ev.target.value)}
+        />
+          <button id='botao' type='submit'>Adicionar</button>
+        </div>
+      </form>
       <hr />
       <section id='tarefas'>
         <div>
