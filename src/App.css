@@ -1,0 +1,35 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#appContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(140, 140, 140);
+  padding: 1em;
+  width: 30em;
+  min-height: 40em;
+  margin: 4em auto;
+  border-radius: 1em;
+}
+
+#tarefaBotao {
+  display: inline;
+}
+
+#tarefaBotao #tarefa, #tarefaBotao #botao {
+  width: 15em;
+  margin: 0 .4em;
+  padding: .4em;
+}
+
+hr {
+  width: 100%;
+  margin: 2em 0;
+}
+
+#tarefas div {
+  display: flex;
+  justify-content: space-around;
+}
