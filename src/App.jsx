@@ -13,8 +13,12 @@ const App = () => {
       tarefa: tarefa
     }
 
-    setTarefas((state) => [novaTarefa, ...state])
+    setTarefas((state) => [...state, novaTarefa])
     setTarefa('')
+  }
+
+  const handleRemove = (id) => {
+    setTarefas((state) => state.filter(tarefa => tarefa.id != id))
   }
 
   return (
@@ -39,7 +43,9 @@ const App = () => {
             <input type="checkbox" />
             <p>{tarefa.tarefa}</p>
             <span>*</span> {/* Aqui está simbolizando o ícone de editar tarefa  */}
-            <span>X</span> {/* Adicionar funcionalidade de excluir tarefa */}
+            <span 
+            id='removeButton'
+            onClick={() => handleRemove(tarefa.id)}>X</span>
           </div>
         ))
       }

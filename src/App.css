@@ -35,3 +35,7 @@ hr {
   margin: 0 1em;
   align-items: center;
 }
+
+#removeButton {
+  cursor: pointer;
+}
