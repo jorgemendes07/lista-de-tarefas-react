@@ -3,6 +3,7 @@ import './App.css'
 
 const App = () => {
   const [tarefa, setTarefa] = useState('')
+  const [tarefas, setTarefas] = useState([])
 
   const handleSubmit = (ev) => {
     ev.preventDefault()
@@ -12,7 +13,7 @@ const App = () => {
       tarefa: tarefa
     }
 
-    console.log(novaTarefa)
+    setTarefas((state) => [novaTarefa, ...state])
     setTarefa('')
   }
 
@@ -33,19 +34,15 @@ const App = () => {
       </form>
       <hr />
       <section id='tarefas'>
-        <div>
-          <span>O</span>
-          <span>Tarefa 1</span>
-          <span>*</span>
-          <span>X</span>
-        </div>
-        <div>
-          <span>O</span>
-          <span style={{ textDecoration: 'line-through' }} >Tarefa 2</span>
-          <span>*</span>
-          <span>X</span>
-        </div>
-        
+        {tarefas.map((tarefa) => (
+          <div key={tarefa.id}>
+            <input type="checkbox" />
+            <p>{tarefa.tarefa}</p>
+            <span>*</span> {/* Aqui está simbolizando o ícone de editar tarefa  */}
+            <span>X</span> {/* Adicionar funcionalidade de excluir tarefa */}
+          </div>
+        ))
+      }
       </section>
     </div>
   )

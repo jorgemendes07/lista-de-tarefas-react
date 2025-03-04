@@ -31,5 +31,7 @@ hr {
 
 #tarefas div {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin: 0 1em;
+  align-items: center;
 }
