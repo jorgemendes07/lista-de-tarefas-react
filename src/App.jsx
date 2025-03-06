@@ -13,7 +13,7 @@ const App = () => {
     }
 
     const novaTarefa = {
-      id: Math.floor(Math.random() * 1000000),
+      id: Date.now(),
       tarefa: tarefa,
       concluida: false
     }
