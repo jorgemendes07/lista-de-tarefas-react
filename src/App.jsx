@@ -8,6 +8,10 @@ const App = () => {
   const handleSubmit = (ev) => {
     ev.preventDefault()
 
+    if (tarefa.trim() === '') {
+      return
+    }
+
     const novaTarefa = {
       id: Math.floor(Math.random() * 1000000),
       tarefa: tarefa
