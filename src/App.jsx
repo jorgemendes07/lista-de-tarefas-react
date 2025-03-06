@@ -14,7 +14,8 @@ const App = () => {
 
     const novaTarefa = {
       id: Math.floor(Math.random() * 1000000),
-      tarefa: tarefa
+      tarefa: tarefa,
+      concluida: false
     }
 
     setTarefas((state) => [...state, novaTarefa])
@@ -23,6 +24,14 @@ const App = () => {
 
   const handleRemove = (id) => {
     setTarefas((state) => state.filter(tarefa => tarefa.id != id))
+  }
+
+  const handleCheckbox = (id) => {
+    setTarefas((state) => 
+      state.map(tarefa =>
+        tarefa.id === id? { ...tarefa, concluida: !tarefa.concluida  } : tarefa
+      )
+    )
   }
 
   return (
@@ -44,8 +53,14 @@ const App = () => {
       <section id='tarefas'>
         {tarefas.map((tarefa) => (
           <div key={tarefa.id}>
-            <input type="checkbox" />
-            <p>{tarefa.tarefa}</p>
+            <input 
+            type="checkbox"
+            onChange={() => handleCheckbox(tarefa.id)}
+            />
+            <p 
+            style={{ textDecoration: tarefa.concluida ? 'line-through' : 'none'}}
+            >{tarefa.tarefa}
+            </p>
             <span>*</span> {/* Aqui está simbolizando o ícone de editar tarefa  */}
             <span 
             id='removeButton'
