@@ -4,6 +4,8 @@ import './App.css'
 const App = () => {
   const [tarefa, setTarefa] = useState('')
   const [tarefas, setTarefas] = useState([])
+  const [tarefaEdicao, setTarefaEdicao] = useState(null)
+  const [novoTexto, setNovoTexto] = useState('')
 
   useEffect(() => {
     const listaDeTarefas = localStorage.getItem('tarefas')
@@ -17,7 +19,6 @@ const App = () => {
       localStorage.setItem('tarefas', JSON.stringify(tarefas))
     }
   }, [tarefas])
-
 
   const handleSubmit = (ev) => {
     ev.preventDefault()
@@ -48,6 +49,20 @@ const App = () => {
     )
   }
 
+  const handleEditar = (id, texto) => {
+    setTarefaEdicao(id)
+    setNovoTexto(texto)
+  }
+
+  const handleSalvarEdicao = (id) => {
+    setTarefas((state) =>
+      state.map((tarefa) => 
+        tarefa.id === id? { ...tarefa, tarefa: novoTexto } : tarefa
+      )
+    )
+    setTarefaEdicao(null)
+  }
+
   return (
     <div id='appContainer'>
       <h1>Lista de tarefas</h1>
@@ -72,11 +87,29 @@ const App = () => {
             checked={tarefa.concluida}
             onChange={() => handleCheckbox(tarefa.id)}
             />
-            <p 
-            style={{ textDecoration: tarefa.concluida ? 'line-through' : 'none'}}
-            >{tarefa.tarefa}
-            </p>
-            <span>*</span> {/* Aqui está simbolizando o ícone de editar tarefa  */}
+
+            {tarefaEdicao === tarefa.id? (
+              <input 
+                type="text"
+                value={novoTexto}
+                onChange={(ev) => setNovoTexto(ev.target.value)}
+                onBlur={() => handleSalvarEdicao(tarefa.id)}
+                onKeyDown={(ev) => ev.key === 'Enter' && handleSalvarEdicao(tarefa.id)}  
+                autoFocus
+              />
+            ) : (
+              <p 
+                style={{ textDecoration: tarefa.concluida ? 'line-through' : 'none'}}
+              >
+                {tarefa.tarefa}
+              </p>
+            )}
+
+            <span
+            onClick={() => handleEditar(tarefa.id, tarefa.tarefa)}
+            >
+            *</span>
+            
             <span 
             id='removeButton'
             onClick={() => handleRemove(tarefa.id)}>X</span>
