@@ -69,6 +69,7 @@ const App = () => {
           <div key={tarefa.id}>
             <input 
             type="checkbox"
+            checked={tarefa.concluida}
             onChange={() => handleCheckbox(tarefa.id)}
             />
             <p 
