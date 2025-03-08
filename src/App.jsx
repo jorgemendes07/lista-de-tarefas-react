@@ -1,9 +1,23 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 const App = () => {
   const [tarefa, setTarefa] = useState('')
   const [tarefas, setTarefas] = useState([])
+
+  useEffect(() => {
+    const listaDeTarefas = localStorage.getItem('tarefas')
+    if (listaDeTarefas) {
+      setTarefas(JSON.parse(listaDeTarefas))
+    }
+  }, [])
+
+  useEffect(() => {
+    if (tarefas.length > 0) {
+      localStorage.setItem('tarefas', JSON.stringify(tarefas))
+    }
+  }, [tarefas])
+
 
   const handleSubmit = (ev) => {
     ev.preventDefault()
@@ -23,7 +37,7 @@ const App = () => {
   }
 
   const handleRemove = (id) => {
-    setTarefas((state) => state.filter(tarefa => tarefa.id != id))
+    setTarefas((state) => state.filter(tarefa => tarefa.id !== id))
   }
 
   const handleCheckbox = (id) => {
