@@ -114,3 +114,135 @@ p {
   position: relative;
   right: .8em
 }
+
+@media (max-width:320px) {
+  #appContainer {
+    width: 85%;
+    min-height: 39em;
+    margin: 1em auto;
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+
+  #tarefaBotao #tarefa, #tarefaBotao #botao {
+    width: 14em;
+    padding: .2em;
+    margin: .1em 0;
+    box-sizing: border-box;
+  }
+
+  hr {
+    margin: .8em 0;
+  }
+
+  #botaoContainer{
+    position: relative;
+    right: .5em
+  }
+
+  #editButton {
+    position: relative;
+    right: .5em;
+    cursor: pointer;
+  }
+
+  #tarefasDiv > div {
+    height: 2em;
+  }
+
+  #tarefaEdit {
+    width: 8em;
+  }
+}
+
+@media (min-width: 320px) and (max-width:425px){
+  #appContainer {
+    width: 85%;
+    min-height: 39em;
+    margin: 1em auto;
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+
+  #tarefaBotao #tarefa, #tarefaBotao #botao {
+    width: 17em;
+    padding: .4em;
+    margin: .2em 0;
+    box-sizing: border-box;
+  }
+
+  hr {
+    margin: .8em 0;
+  }
+
+  #botaoContainer{
+    position: relative;
+    right: .5em
+  }
+
+  #editButton {
+    position: relative;
+    right: .5em;
+    cursor: pointer;
+  }
+
+  #tarefasDiv > div {
+    height: 2em;
+  }
+
+  #tarefaEdit {
+    width: 9em;
+  }
+}
+
+@media (min-width: 425px) and (max-width:768px) {
+  #appContainer {
+    width: 85%;
+    min-height: 39em;
+    margin: 1em auto;
+  }
+
+  h1 {
+    font-size: 3.5em;
+  }
+
+  #tarefaBotao #tarefa, #tarefaBotao #botao {
+    width: 17em;
+    padding: .4em;
+    margin: .2em 0;
+    box-sizing: border-box;
+  }
+
+  hr {
+    margin: .8em 0;
+  }
+
+  #botaoContainer{
+    position: relative;
+    right: .5em
+  }
+
+  #editButton {
+    position: relative;
+    right: .5em;
+    cursor: pointer;
+  }
+
+  #tarefasDiv > div {
+    height: 2em;
+  }
+
+  #tarefaEdit {
+    width: 10em;
+  }
+
+  #tarefaBotao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
