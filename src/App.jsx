@@ -79,17 +79,19 @@ const App = () => {
         </div>
       </form>
       <hr />
-      <section id='tarefas'>
+      <section id='tarefasDiv'>
         {tarefas.map((tarefa) => (
           <div key={tarefa.id}>
             <input 
             type="checkbox"
+            id='checkbox'
             checked={tarefa.concluida}
             onChange={() => handleCheckbox(tarefa.id)}
             />
 
             {tarefaEdicao === tarefa.id? (
               <input 
+                id='tarefaEdit'
                 type="text"
                 value={novoTexto}
                 onChange={(ev) => setNovoTexto(ev.target.value)}
@@ -105,15 +107,18 @@ const App = () => {
               </p>
             )}
 
+           <div id='botaoContainer'>
             <span
-            onClick={() => handleEditar(tarefa.id, tarefa.tarefa)}
-            >
-            *</span>
-            
-            <span 
-            id='removeButton'
-            onClick={() => handleRemove(tarefa.id)}>X</span>
-          </div>
+              onClick={() => handleEditar(tarefa.id, tarefa.tarefa)}
+              id='editButton'
+              >
+              ✏️</span>
+              
+              <span 
+              id='removeButton'
+              onClick={() => handleRemove(tarefa.id)}>X</span>
+              </div>
+           </div>
         ))
       }
       </section>
