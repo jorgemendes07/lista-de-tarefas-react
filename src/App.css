@@ -21,7 +21,7 @@ h1 {
   padding: 1em;
   width: 30em;
   min-height: 40em;
-  margin: 4em auto;
+  margin: 2em auto;
   border-radius: 1em;
 }
 
@@ -160,7 +160,7 @@ p {
 @media (min-width: 320px) and (max-width:425px){
   #appContainer {
     width: 85%;
-    min-height: 39em;
+    min-height: 40em;
   }
 
   h1 {
@@ -201,7 +201,7 @@ p {
 @media (min-width: 425px) and (max-width:768px) {
   #appContainer {
     width: 85%;
-    min-height: 39em;
+    min-height: 40em;
   }
 
   h1 {
